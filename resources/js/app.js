@@ -1,6 +1,8 @@
 import "./bootstrap";
 import "../css/app.css";
 
+import {setThemeOnLoad} from "./theme.js";
+
 import { createApp, h } from "vue";
 import { createInertiaApp, Head, Link } from "@inertiajs/vue3";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy";
@@ -37,3 +39,5 @@ createInertiaApp({
         showSpinner: true,
     },
 });
+
+setThemeOnLoad()

@@ -11,7 +11,7 @@
     @routes
 </head>
 
-<body>
+<body class="font-Montserrat bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-100">
     @inertia
 </body>
 
