@@ -12,9 +12,9 @@ import Main from "./Layouts/Main.vue";
 // font awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons'
+import {faCircleHalfStroke, faEnvelope, faIdBadge, faKey} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCircleHalfStroke)
+library.add(faCircleHalfStroke, faIdBadge, faKey, faEnvelope)
 
 createInertiaApp({
     title: (title) => `My App ${title}`,
