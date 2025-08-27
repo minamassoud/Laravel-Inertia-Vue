@@ -5,7 +5,7 @@ import {setThemeOnLoad} from "./theme.js";
 
 import { createApp, h } from "vue";
 import { createInertiaApp, Head, Link } from "@inertiajs/vue3";
-import { ZiggyVue } from "../../vendor/tightenco/ziggy";
+import { ZiggyVue } from "ziggy-js";
 
 import Main from "./Layouts/Main.vue";
 
