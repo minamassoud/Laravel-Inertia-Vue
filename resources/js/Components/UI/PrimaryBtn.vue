@@ -2,7 +2,7 @@
 
 const props = defineProps({
     type: {
-        type:String,
+        type: String,
         default: "button",
     }
 })
@@ -16,6 +16,6 @@ const props = defineProps({
         hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600
         disabled:bg-slate-300 disabled:cursor-wait"
     >
-       <slot/>
+        <slot/>
     </button>
 </template>

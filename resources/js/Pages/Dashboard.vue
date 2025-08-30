@@ -3,8 +3,8 @@ import {Head} from "@inertiajs/vue3";
 </script>
 
 <template>
-    <head title="- home"/>
+    <head title="- dashboard"/>
     <header>
-        <p>This is the home page.</p>
+        <p>This is the Dashboard</p>
     </header>
 </template>

@@ -5,7 +5,7 @@ import Title from "../../Components/UI/Title.vue";
 import TextLink from "../../Components/UI/TextLink.vue";
 import InputField from "../../Components/UI/InputField.vue";
 import PrimaryBtn from "../../Components/UI/PrimaryBtn.vue";
-import {useForm} from "@inertiajs/vue3";
+import {Head, useForm} from "@inertiajs/vue3";
 
 const form = useForm({
     name: "",
@@ -23,12 +23,13 @@ const submit = () => {
 </script>
 
 <template>
+    <Head title="- Register"/>
     <Container class="md:w-1/2">
         <div class="text-center mb-8">
             <Title>Register a new account</Title>
             <p>
                 Already have an account?
-                <TextLink label="Login" route-name="home"/>
+                <TextLink label="Login" route-name="login"/>
             </p>
         </div>
 

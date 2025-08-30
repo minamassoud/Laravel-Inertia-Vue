@@ -6,18 +6,12 @@ import {setThemeOnLoad} from "./theme.js";
 import { createApp, h } from "vue";
 import { createInertiaApp, Head, Link } from "@inertiajs/vue3";
 import { ZiggyVue } from "ziggy-js";
+import {FontAwesomeIcon} from "./Plugins/fontawesome.js";
 
 import Main from "./Layouts/Main.vue";
 
-// font awesome
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import {faCircleHalfStroke, faEnvelope, faIdBadge, faKey} from '@fortawesome/free-solid-svg-icons'
-
-library.add(faCircleHalfStroke, faIdBadge, faKey, faEnvelope)
-
 createInertiaApp({
-    title: (title) => `My App ${title}`,
+    title: (title) => title ? title : import.meta.env.VITE_APP_NAME,
     resolve: (name) => {
         const pages = import.meta.glob("./Pages/**/*.vue", { eager: true });
         let page = pages[`./Pages/${name}.vue`];
