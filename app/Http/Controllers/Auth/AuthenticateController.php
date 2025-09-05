@@ -11,9 +11,11 @@ use Inertia\Inertia;
 
 class AuthenticateController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
-        return Inertia::render('Auth/Login');
+        return Inertia::render('Auth/Login', [
+            'status' => $request->session()->get('status')
+        ]);
     }
 
     public function store(Request $request, AuthenticateAction $action)

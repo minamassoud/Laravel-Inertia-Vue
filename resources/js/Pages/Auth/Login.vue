@@ -7,6 +7,13 @@ import InputField from "../../Components/UI/InputField.vue";
 import PrimaryBtn from "../../Components/UI/PrimaryBtn.vue";
 import {Head, useForm} from "@inertiajs/vue3";
 import Checkbox from "../../Components/UI/Checkbox.vue";
+import SessionMessage from "../../Components/UI/SessionMessage.vue";
+
+const props = defineProps({
+    status: {
+        default: ""
+    }
+})
 
 const form = useForm({
     email: "",
@@ -24,6 +31,8 @@ const submit = () => {
 
 <template>
     <Head title="- Login"/>
+    <SessionMessage :status="props.status"/>
+
     <Container class="md:w-1/2">
         <div class="text-center mb-8">
             <Title>Login</Title>
@@ -42,7 +51,7 @@ const submit = () => {
 
             <div class="flex items-center justify-between !mb-4">
                 <Checkbox v-model="form.remember_me" name="remember_me">Remember Me</Checkbox>
-                <TextLink label="Forgot my Password" route-name="forgotPassword"/>
+                <TextLink label="Forgot my Password" route-name="password.request"/>
             </div>
 
             <PrimaryBtn :disabled="form.processing" type="submit">Login</PrimaryBtn>
