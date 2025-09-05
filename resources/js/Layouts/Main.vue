@@ -40,11 +40,17 @@ const showMenu = ref(false)
                                 border border-slate-300 overflow-hidden w-40 "
                          @click="showMenu = false">
 
+                        <Link :href="route('dashboard')" as="button"
+                              class="text-left w-full px-6 py-3 hover:bg-slate-700"
+                              method="get">Dashboard
+                        </Link>
+
+                        <Link :href="route('profile')" as="button" class="text-left w-full px-6 py-3 hover:bg-slate-700"
+                              method="get">Profile
+                        </Link>
+
                         <Link :href="route('logout')" as="button" class="text-left w-full px-6 py-3 hover:bg-slate-700"
                               method="post">Logout
-                        </Link>
-                        <Link :href="route('dashboard')" as="button" class="text-left w-full px-6 py-3 hover:bg-slate-700"
-                              method="get">Dashboard
                         </Link>
                     </div>
                 </div>
