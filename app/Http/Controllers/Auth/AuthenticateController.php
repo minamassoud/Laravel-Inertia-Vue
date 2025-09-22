@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Services\Auth\AuthenticateAction;
+use App\ValidationRules\UserRules;
 use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,10 +17,12 @@ class AuthenticateController extends Controller
         return Inertia::render('Auth/Login');
     }
 
-    public function store(Request $request, AuthenticateAction $action)
+    public function store(Request $request, AuthenticateAction $action, UserRules $rules)
     {
 
-        if ($action->login($request->all())) {
+        $validated = $request->validate($rules->forAuthentication());
+
+        if ($action->login($validated)) {
 
             $request->session()->regenerate();
 

@@ -11,7 +11,7 @@ import Checkbox from "../../Components/UI/Checkbox.vue";
 const form = useForm({
     email: "",
     password: "",
-    remember_me: "",
+    remember_me: false,
 })
 
 const submit = () => {

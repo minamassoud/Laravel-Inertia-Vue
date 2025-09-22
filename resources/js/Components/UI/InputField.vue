@@ -24,7 +24,7 @@ const props = defineProps({
     },
     icon: String,
     autocomplete: {
-        default: ""
+        default: "off"
     },
     error: {
         default: ""
