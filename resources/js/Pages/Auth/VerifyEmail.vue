@@ -4,14 +4,6 @@ import Container from "../../Components/Container.vue"
 import PrimaryBtn from "../../Components/UI/PrimaryBtn.vue";
 import {Head, useForm} from "@inertiajs/vue3";
 import {route} from "ziggy-js";
-import SessionMessage from "../../Components/UI/SessionMessage.vue";
-
-const props = defineProps({
-    status: {
-        type: String,
-        default: ""
-    }
-})
 
 const form = useForm({})
 const submit = () => {
@@ -22,7 +14,6 @@ const submit = () => {
 
 <template>
     <Head title="Email Verification"/>
-    <SessionMessage :status="props.status"/>
 
     <Container class="md:w-1/2">
         <div class="mb-4">

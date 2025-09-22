@@ -13,9 +13,7 @@ class AuthenticateController extends Controller
 {
     public function create(Request $request)
     {
-        return Inertia::render('Auth/Login', [
-            'status' => $request->session()->get('status')
-        ]);
+        return Inertia::render('Auth/Login');
     }
 
     public function store(Request $request, AuthenticateAction $action)

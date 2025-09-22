@@ -15,9 +15,7 @@ class ResetPasswordController extends Controller
 {
     public function create(Request $request)
     {
-        return Inertia::render('Auth/ForgotPassword', [
-            'status' => $request->session()->get('status')
-        ]);
+        return Inertia::render('Auth/ForgotPassword');
     }
 
     public function show(Request $request)

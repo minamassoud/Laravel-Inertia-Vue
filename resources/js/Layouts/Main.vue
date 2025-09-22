@@ -4,6 +4,7 @@ import NavLink from '../Components/UI/NavLink.vue';
 import {Link, usePage} from "@inertiajs/vue3";
 import {computed, ref} from "vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import Toast from "../Components/UI/Toast.vue";
 
 
 const page = usePage()
@@ -14,7 +15,8 @@ const showMenu = ref(false)
 </script>
 
 <template>
-    <div v-show="showMenu" class="fixed inset-0 z-40 " @click="showMenu = false"></div>
+    <div v-show="showMenu" class="fixed inset-0 z-50 " @click="showMenu = false"></div>
+    <Toast class="z-40"/>
     <header class="bg-slate-800 text-white ">
 
         <nav class="p-6 mx-auto max-w-screen-lg flex items-center justify-between">
@@ -68,6 +70,7 @@ const showMenu = ref(false)
         </nav>
 
     </header>
+
 
     <main class="p-6 mx-auto max-w-screen-lg">
         <slot/>

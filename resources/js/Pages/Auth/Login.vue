@@ -7,13 +7,6 @@ import InputField from "../../Components/UI/InputField.vue";
 import PrimaryBtn from "../../Components/UI/PrimaryBtn.vue";
 import {Head, useForm} from "@inertiajs/vue3";
 import Checkbox from "../../Components/UI/Checkbox.vue";
-import SessionMessage from "../../Components/UI/SessionMessage.vue";
-
-const props = defineProps({
-    status: {
-        default: ""
-    }
-})
 
 const form = useForm({
     email: "",
@@ -31,7 +24,6 @@ const submit = () => {
 
 <template>
     <Head title="- Login"/>
-    <SessionMessage :status="props.status"/>
 
     <Container class="md:w-1/2">
         <div class="text-center mb-8">
