@@ -7,6 +7,7 @@ import {useForm} from "@inertiajs/vue3";
 import PrimaryBtn from "../../../Components/UI/PrimaryBtn.vue";
 import {route} from "ziggy-js";
 import {ref} from "vue";
+import DangerBtn from "../../../Components/UI/DangerBtn.vue";
 
 const showConfirmPassword = ref(false)
 
@@ -31,10 +32,9 @@ const submit = () => {
         <p class="mb-6">this action is permanent</p>
 
         <div>
-            <button v-if="!showConfirmPassword"
-                    class="text-white bg-red-600 rounded shadow-lg px-4 py-2 hover:bg-red-500 active:bg-red-400"
-                    @click="showConfirmPassword = true">Delete User
-            </button>
+            <DangerBtn v-if="!showConfirmPassword" class="!w-32" @click="showConfirmPassword = true">
+                Delete User
+            </DangerBtn>
         </div>
         <form v-if="showConfirmPassword"
               class="space-y-4 flex flex-row gap-3" @submit.prevent="submit">
