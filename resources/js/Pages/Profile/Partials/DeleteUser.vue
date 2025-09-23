@@ -32,7 +32,7 @@ const submit = () => {
 
         <div>
             <button v-if="!showConfirmPassword"
-                    class="bg-red-600 rounded shadow-lg px-4 py-2 hover:bg-red-500 active:bg-red-400"
+                    class="text-white bg-red-600 rounded shadow-lg px-4 py-2 hover:bg-red-500 active:bg-red-400"
                     @click="showConfirmPassword = true">Delete User
             </button>
         </div>
