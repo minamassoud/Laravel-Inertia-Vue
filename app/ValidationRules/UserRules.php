@@ -17,7 +17,14 @@ class UserRules
         return array_merge(
             $this->nameRules(),
             $this->emailRules(),
-            $this->passwordRules(required: true)
+            $this->passwordRules()
+        );
+    }
+
+    public function forDeletion(): array
+    {
+        return array_merge(
+            $this->currentPasswordRules()
         );
     }
 
@@ -37,11 +44,9 @@ class UserRules
         return ['email' => ['required', 'string', 'email', 'max:255', $uniqueRule]];
     }
 
-    private function passwordRules(bool $required = true): array
+    private function passwordRules(): array
     {
-        $rule = $required ? 'required' : 'nullable';
-
-        return ['password' => [$rule, 'string', PasswordRule::min(8), 'confirmed']];
+        return ['password' => ['required', 'string', PasswordRule::min(8), 'confirmed']];
     }
 
 
@@ -61,7 +66,7 @@ class UserRules
     {
         return array_merge(
             $this->currentPasswordRules(),
-            $this->passwordRules(required: true)
+            $this->passwordRules()
         );
     }
 

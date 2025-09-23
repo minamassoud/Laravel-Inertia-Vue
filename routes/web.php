@@ -10,10 +10,15 @@ Route::inertia('/', 'Home')->name('home');
 
 
 Route::middleware(["auth"])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
-    Route::patch('/profile-information',
-        [ProfileController::class, 'updateInformation'])->name('profile.update-information');
+
+    Route::get('/profile', [ProfileController::class, 'create'])->name('profile');
+    Route::patch('/profile', [ProfileController::class, 'updateInformation'])->name('profile.update-information');
+    Route::put('/profile', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.delete');
+
+    Route::middleware(['verified'])->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    });
 
 });
