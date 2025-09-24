@@ -44,8 +44,9 @@ const submit = () => {
 
             <div class="inline-flex items-baseline gap-3">
                 <primary-btn class="!mt-3 !w-32" type="submit">Confirm</primary-btn>
-                <p class="hover:underline hover:underline-offset-2 cursor-pointer" @click="showConfirmPassword = false">
-                    Cancel</p>
+                <button class="text-link" @click="showConfirmPassword = false">
+                    Cancel
+                </button>
             </div>
 
         </form>

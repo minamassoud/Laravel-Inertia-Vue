@@ -45,8 +45,7 @@ const resendEmail = (e) => {
 
             <p v-if="!props.user.email_verified_at">
                 Your email address is not verified
-                <button class="text-indigo-500 hover:text-indigo-600 font-medium underline
-                dark:text-indigo-400 dark:hover:text-indigo-500 disabled:text-slate-300 disabled:cursor-wait" @click="resendEmail">
+                <button class="text-link" @click="resendEmail">
                     Send a new Verification Link.
                 </button>
             </p>
