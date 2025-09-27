@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="rounded shadow-lg bg-gray-200 dark:bg-slate-800">
+    <div class="rounded overflow-hidden shadow-lg bg-gray-200 dark:bg-slate-800">
         <div class="bg-slate-500">
             <img :src="listing.image ? `/storage/${listing.image}` : '/storage/default/listing/default_img.jpg'"
                  alt="image" class="w-full h-48 object-cover object-center">
