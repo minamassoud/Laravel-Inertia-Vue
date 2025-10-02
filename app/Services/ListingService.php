@@ -11,12 +11,12 @@ class ListingService
 
     public function __construct(?Listing $listing = null) { }
 
-    public function getListings(array $filters): LengthAwarePaginator
+    public function getListingsPaginated(array $withFilters, ?int $withPageCount = 6): LengthAwarePaginator
     {
         return Listing::with('user')
-                      ->where(fn($q) => ListingFilter::apply($q, $filters))
+            ->where(fn($q) => ListingFilter::apply($q, $withFilters))
                       ->latest()
-                      ->paginate(7)
+            ->paginate($withPageCount)
                       ->withQueryString();
     }
 

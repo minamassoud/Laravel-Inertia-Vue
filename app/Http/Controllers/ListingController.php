@@ -17,7 +17,7 @@ class ListingController extends Controller
     public function index(Request $request, ListingService $service)
     {
         $filters = $request->except(['page']);
-        $listings = $service->getListings($filters);
+        $listings = $service->getListingsPaginated(withFilters: $filters);
 
         return Inertia::render('Home', [
             'listings' => $listings,

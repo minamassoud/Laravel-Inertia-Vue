@@ -35,10 +35,10 @@ describe('ListingService', function () {
                ->create();
 
         $filters = [];
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         expect($result)->toBeInstanceOf(LengthAwarePaginator::class);
-        expect($result->items())->toHaveCount(7); // Default pagination is 7
+        expect($result->items())->toHaveCount(6); // Default pagination is 7
         expect($result->first()->user)->toBeInstanceOf(User::class);
         expect($result->first()->user->id)->toBe($this->user->id);
     });
@@ -58,7 +58,7 @@ describe('ListingService', function () {
                ->create(['desc' => 'Looking for Laravel expert']);
 
         $filters = ['search' => 'Laravel'];
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         expect($result->total())->toBe(2);
         foreach ($result->items() as $listing) {
@@ -82,7 +82,7 @@ describe('ListingService', function () {
                ->create();
 
         $filters = ['user' => $user1->id];
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         expect($result->total())->toBe(3);
         foreach ($result->items() as $listing) {
@@ -104,7 +104,7 @@ describe('ListingService', function () {
                ->create(['tags' => 'php,symfony,backend']);
 
         $filters = ['tag' => 'laravel'];
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         expect($result->total())->toBe(1);
         expect($result->first()->tags)->toContain('laravel');
@@ -143,7 +143,7 @@ describe('ListingService', function () {
             'tag' => 'backend'
         ];
 
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         expect($result->total())->toBe(1);
         $listing = $result->first();
@@ -167,7 +167,7 @@ describe('ListingService', function () {
                                 ->create(['created_at' => now()]);
 
         $filters = [];
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         $items = $result->items();
         expect($items[0]->id)->toBe($newestListing->id);
@@ -183,11 +183,11 @@ describe('ListingService', function () {
                ->create();
 
         $filters = [];
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         expect($result)->toBeInstanceOf(LengthAwarePaginator::class);
-        expect($result->perPage())->toBe(7);
-        expect($result->items())->toHaveCount(7);
+        expect($result->perPage())->toBe(6);
+        expect($result->items())->toHaveCount(6);
         expect($result->total())->toBe(15);
         expect($result->lastPage())->toBe(3);
     });
@@ -202,7 +202,7 @@ describe('ListingService', function () {
         request()->merge(['search' => 'test', 'user' => 123]);
 
         $filters = ['search' => 'test'];
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         // The withQueryString() method should preserve query parameters
         expect($result)->toBeInstanceOf(LengthAwarePaginator::class);
@@ -217,7 +217,7 @@ describe('ListingService', function () {
                ->create();
 
         $filters = [];
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         expect($result->total())->toBe(5);
         expect($result->items())->toHaveCount(5);
@@ -235,7 +235,7 @@ describe('ListingService', function () {
             'tag' => null
         ];
 
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         // With null values, filters should still be applied but match nothing or everything
         expect($result)->toBeInstanceOf(LengthAwarePaginator::class);
@@ -253,7 +253,7 @@ describe('ListingService', function () {
             'tag' => ''
         ];
 
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         expect($result)->toBeInstanceOf(LengthAwarePaginator::class);
     });
@@ -264,7 +264,7 @@ describe('ListingService', function () {
                ->create();
 
         $filters = [];
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         $listing = $result->first();
 
@@ -280,7 +280,7 @@ describe('ListingService', function () {
                ->create(['title' => 'PHP Developer']);
 
         $filters = ['search' => 'NonExistentTerm'];
-        $result = $this->service->getListings($filters);
+        $result = $this->service->getListingsPaginated($filters);
 
         expect($result->total())->toBe(0);
         expect($result->items())->toBeEmpty();
