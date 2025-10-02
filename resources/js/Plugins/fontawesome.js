@@ -7,7 +7,7 @@ import {
     faCircleHalfStroke,
     faEnvelope,
     faIdBadge,
-    faKey,
+    faKey, faMagnifyingGlass,
     faTriangleExclamation
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -18,7 +18,8 @@ library.add(
     faKey,
     faEnvelope,
     faAngleDown,
-    faTriangleExclamation
+    faTriangleExclamation,
+    faMagnifyingGlass,
 )
 
 // Export the component so it can be registered globally
