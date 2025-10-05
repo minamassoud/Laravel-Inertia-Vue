@@ -4,8 +4,8 @@ import Card from "../Components/Card.vue";
 import PaginationLinks from "../Components/PaginationLinks.vue";
 import Container from "../Components/Container.vue";
 import InputField from "../Components/UI/InputField.vue";
-
-
+import {watch} from "vue";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 
 const props = defineProps({
@@ -30,13 +30,50 @@ const filterSearch = () => {
             preserveScroll: true,
         })
 }
+
+const valueByKey = (key, value) => {
+    if (key === 'user') {
+        return props.listings.data.find(l => l.user_id === Number(value)).user.name
+    }
+
+    return value
+}
+
+const clearFilter = (key) => {
+    delete props.filters[key]
+    if (key === 'search') form.search = "";
+
+    router.get(route('home'),
+        {
+            ...props.filters
+        },
+        {
+            replace: true,
+            preserveState: true,
+            preserveScroll: true,
+        })
+}
+
+watch(() => form.search, (newValue) => {
+    if (newValue === '') {
+        clearFilter('search')
+    }
+}, {immediate: true})
+
 </script>
 
 <template>
     <head title="Listings"/>
 
     <section class="flex flex-row justify-between items-center">
-        <div></div>
+        <div class="flex flex-row items-center gap-2">
+            <template v-for="(value, key) in filters" :key="key">
+                <button v-if="value" class="pullet-btn-x" @click="clearFilter(key)">
+                    <span>{{ valueByKey(key, value) }}</span>
+                    <font-awesome-icon icon="xmark"/>
+                </button>
+            </template>
+        </div>
         <div class="mb-4 w-64">
             <form @submit.prevent="filterSearch">
                 <InputField v-model="form.search" icon="magnifying-glass" label="" placeholder="Search..."
