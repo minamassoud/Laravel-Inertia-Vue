@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Auth;
+namespace App\Application\Auth;
 
 
 use Illuminate\Support\Arr;

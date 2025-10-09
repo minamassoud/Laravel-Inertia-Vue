@@ -2,7 +2,7 @@
 
 use App\Models\Listing;
 use App\Models\User;
-use App\Services\ListingService;
+use App\Application\ListingService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Pagination\LengthAwarePaginator;
 

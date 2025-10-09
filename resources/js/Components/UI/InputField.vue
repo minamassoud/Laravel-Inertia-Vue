@@ -37,7 +37,8 @@ const snakeCaseLabel = computed( () => props.label.toLowerCase().replace(' ', '_
 
 <template>
     <div>
-        <label :for="snakeCaseLabel" class="block text-sm mb-2 font-medium text-slate-700 dark:text-slate-300">
+        <label v-if="props.label" :for="snakeCaseLabel"
+               class="block text-sm mb-2 font-medium text-slate-700 dark:text-slate-300">
             {{ props.label }}
         </label>
 

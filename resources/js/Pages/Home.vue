@@ -82,24 +82,43 @@ watch(() => form.search, (newValue) => {
         </div>
     </section>
 
-    <div v-if="Object.keys(listings.data).length">
+    <template v-if="listings.data !== undefined">
+        <div v-if="Object.keys(listings.data).length">
 
-        <div class="grid grid-col-3 gap-4">
-            <div v-for="listing in props.listings.data" :key="listing.id">
-                <Card :filters="props.filters" :listing="listing"/>
+            <div class="grid grid-col-3 gap-4">
+                <div v-for="listing in props.listings.data" :key="listing.id">
+                    <Card :filters="props.filters" :listing="listing"/>
+                </div>
             </div>
-        </div>
 
-        <div class="mt-4">
-            <pagination-links :from="listings.from" :links="listings.links" :to="listings.to" :total="listings.total"/>
-        </div>
+            <div class="mt-4">
+                <pagination-links :from="listings.from" :links="listings.links" :to="listings.to"
+                                  :total="listings.total"/>
+            </div>
 
-    </div>
-    <div v-else>
-        <container class="flex items-center justify-center w-1/2">
-            There are no Listings here
-        </container>
-    </div>
+        </div>
+        <div v-else>
+            <container class="flex items-center justify-center w-1/2">
+                There are no Listings here
+            </container>
+        </div>
+    </template>
+    <template v-else>
+        <div v-if="Object.keys(listings).length">
+
+            <div class="grid grid-col-3 gap-4">
+                <div v-for="listing in props.listings" :key="listing.id">
+                    <Card :filters="props.filters" :listing="listing"/>
+                </div>
+            </div>
+
+        </div>
+        <div v-else>
+            <container class="flex items-center justify-center w-1/2">
+                There are no Listings here
+            </container>
+        </div>
+    </template>
 
 
 </template>

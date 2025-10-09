@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Services\Auth\RegisterAction;
+use App\Application\Auth\RegisterAction;
 use App\ValidationRules\UserRules;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

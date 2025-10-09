@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreListingRequest;
 use App\Http\Requests\UpdateListingRequest;
 use App\Models\Listing;
-use App\Services\ListingService;
+use App\Application\ListingService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -17,7 +17,7 @@ class ListingController extends Controller
     public function index(Request $request, ListingService $service)
     {
         $filters = $request->except(['page']);
-        $listings = $service->getListingsPaginated(withFilters: $filters);
+        $listings = $service->getListingsPaginated(filters: $filters, pageCount: 6);
 
         return Inertia::render('Home', [
             'listings' => $listings,
